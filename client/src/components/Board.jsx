@@ -2,7 +2,7 @@ const Board = ({ board, toggleCell }) => {
   return (
     <div>
       <div>
-        {board.map((row, rowIndex) => (
+        {board?.map((row, rowIndex) => (
           <div key={rowIndex} style={{ display: 'flex' }}>
             {row.map((cellValue, colIndex) => (
               <div

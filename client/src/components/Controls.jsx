@@ -1,3 +1,5 @@
+import GameLoader from "./GameLoader";
+
 const Controls = ({ handleFetchBoard, handleInitialize, handleEvolve, isEvolving, isInitializing, isFetching, isInitialized, generations, setGenerations }) => {
 
   return (
@@ -16,6 +18,7 @@ const Controls = ({ handleFetchBoard, handleInitialize, handleEvolve, isEvolving
       <button onClick={handleFetchBoard} disabled={!isInitialized || isInitializing || isEvolving || isFetching}>
         {isFetching ? 'Fetching...' : 'Get Board State'}
       </button>
+      <GameLoader />
     </>
   )
 };
