@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import useGameBoard from './hooks/useGameBoard';
 
 import Board from './components/Board';
@@ -8,14 +7,15 @@ import LoaderSpinner from './components/LoaderSpinner';
 
 import './App.css'
 
-export const URL = 'http://localhost:3001/api';
+export const backendURL = 'http://localhost:3001/api';
+export const boardSize = { rows: 15, cols: 27 }
 
 const App = () => {
-  const [boardSize] = useState({ rows: 15, cols: 27 });
   const {
     generations,
     setGenerations,
     board,
+    setBoard,
     toggleCell,
     isEvolving,
     isInitializing,
@@ -49,7 +49,7 @@ const App = () => {
         <LoaderSpinner {...loaderSpinnerProps} />
         <Board board={board} toggleCell={toggleCell} />
       </div>
-      <GameLoadAndSaveControls board={board} />
+      <GameLoadAndSaveControls board={board} setBoard={setBoard} />
     </>
   );
 };

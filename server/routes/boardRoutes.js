@@ -2,6 +2,7 @@ const express = require("express");
 const {
 	initialize,
 	getBoard,
+	getGameSaves,
 	evolve,
 	save,
 	load
@@ -27,5 +28,6 @@ router.get("/board", validateGenerations, handleValidationErrors, getBoard);
 router.post("/evolve", evolve);
 router.post("/save", validateBoard, handleValidationErrors, save);
 router.get("/load", load);
+router.get("/game-saves", getGameSaves);
 
 module.exports = router;

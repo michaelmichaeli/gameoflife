@@ -2,7 +2,7 @@ const {
 	initializeBoard,
 	evolveBoard,
 } = require("../services/gameOfLife");
-const { saveBoard, loadBoard } = require("../state/boardState");
+const { saveBoardToState, loadBoardFromState, getGameSavesFromState } = require("../state/boardState");
 
 let board = [];
 
@@ -13,6 +13,15 @@ const initialize = (req, res, next) => {
 			board = req.body.board;
 		}
 		res.status(200).json({ message: "Board initialized" });
+	} catch (error) {
+		next(error);
+	}
+};
+
+const getGameSaves = (req, res, next) => {
+	try {
+		const gameSaves = getGameSavesFromState();
+		res.status(200).json({ gameSaves });
 	} catch (error) {
 		next(error);
 	}
@@ -45,7 +54,7 @@ const save = (req, res, next) => {
 	try {
 		const currentName = req.query.name;
 		const currentBoard = req.body.board;
-		const name = saveBoard(currentName, currentBoard);
+		const name = saveBoardToState(currentName, currentBoard);
 		res.status(200).json({ name });
 	} catch (error) {
 		next(error);
@@ -55,11 +64,11 @@ const save = (req, res, next) => {
 const load = (req, res, next) => {
 	try {
 		const name = req.query.name;
-		const board = loadBoard(name);
+		const board = loadBoardFromState(name);
 		res.status(200).json({ board });
 	} catch (error) {
 		next(error);
 	}
 };
 
-module.exports = { initialize, getBoard, evolve, save, load };
+module.exports = { initialize, getBoard, getGameSaves, evolve, save, load };

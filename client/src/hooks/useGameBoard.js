@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
 import { generateEmptyBoard } from '../utils/boardUtils';
-import { URL } from '../App';
+import { backendURL } from '../App';
 
 const fetchBoard = async ({ queryKey }) => {
   const [_, generations] = queryKey;
-  const response = await axios.get(`${URL}/board?generations=${generations}`);
+  const response = await axios.get(`${backendURL}/board?generations=${generations}`);
   return response.data.board;
 };
 
 const evolveBoard = async () => {
   try {
-    const response = await axios.post(`${URL}/evolve`);
+    const response = await axios.post(`${backendURL}/evolve`);
     return response.data;
   } catch (error) {
     throw new Error('Failed to evolve the board');
@@ -21,7 +21,7 @@ const evolveBoard = async () => {
 
 const initializeBoard = async (initialBoard) => {
   try {
-    const response = await axios.post(`${URL}/initialize`, { board: initialBoard });
+    const response = await axios.post(`${backendURL}/initialize`, { board: initialBoard });
     return response.data;
   } catch (error) {
     throw new Error('Failed to initialize the board');
@@ -129,6 +129,7 @@ const useGameBoard = (boardSize, defaultGenerations = 2) => {
     generations,
     setGenerations,
     board,
+    setBoard,
     toggleCell,
     fetchBoardData,
     evolveBoardData,

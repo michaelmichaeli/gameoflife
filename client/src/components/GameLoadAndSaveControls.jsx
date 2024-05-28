@@ -1,29 +1,32 @@
 import React from 'react';
 import useGameLoadAndSave from '../hooks/useGameLoadAndSave';
 
-const GameLoadAndSaveControls = ({ board }) => {
+const GameLoadAndSaveControls = ({ board, setBoard }) => {
   const {
     gameSaves,
-    selectedGameSaves,
-    setSelectedGameSaves,
+    selectedGameSave,
+    setSelectedGameSave,
     handleLoadGame,
     handleSaveGame,
-  } = useGameLoadAndSave();
+  } = useGameLoadAndSave(setBoard);
 
   return (
     <div className='game-loader-controls'>
       <div>
-        <select onChange={(e) => setSelectedGameSaves(e.target.value)}>
-          <option value="">Select a game save to load</option>
-          {gameSaves?.map(gameState => (
-            <option key={gameState.id} value={gameState.id}>
-              Game ID: {gameState.id}
+        <select onChange={(e) => setSelectedGameSave(e.target.value)}>
+          <option value="">Game Board</option>
+          {gameSaves?.map(name => (
+            <option key={name} value={name}>
+              {name}
             </option>
           ))}
         </select>
-        <button onClick={handleLoadGame}>Load Game</button>
+        <button
+          onClick={handleLoadGame}
+          disabled={!selectedGameSave}
+        >Load Game Board</button>
       </div>
-      <button onClick={() => handleSaveGame(board)}>Save Game</button>
+      <button onClick={() => handleSaveGame(board)}>Save Game Board</button>
     </div>
   );
 };

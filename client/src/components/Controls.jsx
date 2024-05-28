@@ -25,7 +25,7 @@ const Controls = ({ handleFetchBoard, handleInitialize, handleEvolve, isEvolving
           onClick={handleFetchBoard}
           disabled={!isInitialized || isInitializing || isEvolving || isFetching}
         >
-          {isFetching ? 'Fetching...' : `Evovle ${generations} Times`}
+          {isFetching ? 'Fetching...' : `Evolve ${generations} Generations`}
         </button>
       </div>
     </div>
