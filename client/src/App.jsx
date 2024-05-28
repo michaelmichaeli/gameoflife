@@ -3,12 +3,13 @@ import useGameBoard from './hooks/useGameBoard';
 
 import Board from './components/Board';
 import Controls from './components/Controls';
+import GameLoadAndSaveControls from './components/GameLoadAndSaveControls';
 import LoaderSpinner from './components/LoaderSpinner';
 
 import './App.css'
 
 const App = () => {
-  const [boardSize] = useState({ rows: 20, cols: 35 });
+  const [boardSize] = useState({ rows: 15, cols: 27 });
   const {
     generations,
     setGenerations,
@@ -42,10 +43,11 @@ const App = () => {
     <>
       <h1>Conway&apos;s Game of Life</h1>
       <Controls {...controlsProps} />
-      <div>
+      <div className='game-container'>
         <LoaderSpinner {...loaderSpinnerProps} />
         <Board board={board} toggleCell={toggleCell} />
       </div>
+      <GameLoadAndSaveControls />
     </>
   );
 };

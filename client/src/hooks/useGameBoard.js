@@ -79,6 +79,7 @@ const useGameBoard = (boardSize, defaultGenerations = 2) => {
     },
     onError: (error) => {
       console.error('Evolution error:', error);
+      setIsInitialized(false);
     },
     onSettled: () => {
       console.log('Evolution settled');
@@ -97,6 +98,7 @@ const useGameBoard = (boardSize, defaultGenerations = 2) => {
     },
     onError: (error) => {
       console.error('Initialization error:', error);
+      setIsInitialized(false);
     },
     onSettled: () => {
       console.log('Initialization settled');
@@ -120,6 +122,7 @@ const useGameBoard = (boardSize, defaultGenerations = 2) => {
     const newBoard = board.map((r, rowIndex) =>
       r.map((cell, colIndex) => (rowIndex === row && colIndex === col ? (cell ? 0 : 1) : cell))
     );
+    setIsInitialized(false);
     setBoard(newBoard);
   };
 

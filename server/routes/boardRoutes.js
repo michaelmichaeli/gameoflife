@@ -1,13 +1,6 @@
 const express = require("express");
-const {
-	initialize,
-	getBoard,
-	evolve,
-} = require("../controllers/boardController");
-const {
-	validateBoard,
-	validateGenerations,
-} = require("../middleware/validators");
+const {	initialize,	getBoard,	evolve,} = require("../controllers/boardController");
+const {	validateBoard, validateGenerations,} = require("../middleware/validators");
 const { validationResult } = require("express-validator");
 
 const router = express.Router();

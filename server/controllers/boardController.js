@@ -5,7 +5,6 @@ let board = [];
 const initialize = (req, res, next) => {
 	try {
 		board = req.body.board;
-		console.log("🚀 ~ initialize ~ board:", board);
 		res.status(200).json({ message: "Board initialized" });
 	} catch (error) {
 		next(error);

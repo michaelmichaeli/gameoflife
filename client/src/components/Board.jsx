@@ -11,8 +11,9 @@ const Board = ({ board, toggleCell }) => {
                   width: '20px',
                   height: '20px',
                   border: '1px solid black',
-                  backgroundColor: cellValue ? 'greenyellow' : '',
-                  cursor: 'pointer'
+                  backgroundColor: cellValue ? 'greenyellow' : 'transparent',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s',
                 }}
                 onClick={() => toggleCell(rowIndex, colIndex)}
               />

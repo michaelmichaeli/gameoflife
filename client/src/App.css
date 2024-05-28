@@ -3,6 +3,37 @@
 	margin: 0 auto;
 	padding: 2rem;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+input {
+	width: 40px;
+}
+
+.game-controls {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.game-container {
+	padding-block: 20px;
+}
+
+.game-loader-controls {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	width: 100%;
 }
 
 .loader {
@@ -11,8 +42,8 @@
 	border-radius: 50%;
 	position: absolute;
 	animation: rotate 1s linear infinite;
-  top: 50%;
-  left: 50%;
+	top: 50%;
+	left: 50%;
 }
 .loader::before,
 .loader::after {
