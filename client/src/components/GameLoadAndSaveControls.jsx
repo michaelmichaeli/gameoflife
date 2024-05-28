@@ -1,7 +1,7 @@
 import React from 'react';
 import useGameLoadAndSave from '../hooks/useGameLoadAndSave';
 
-const GameLoadAndSaveControls = () => {
+const GameLoadAndSaveControls = ({ board }) => {
   const {
     gameSaves,
     selectedGameSaves,
@@ -23,7 +23,7 @@ const GameLoadAndSaveControls = () => {
         </select>
         <button onClick={handleLoadGame}>Load Game</button>
       </div>
-      <button onClick={() => handleSaveGame(/* pass the current game state here */)}>Save Game</button>
+      <button onClick={() => handleSaveGame(board)}>Save Game</button>
     </div>
   );
 };

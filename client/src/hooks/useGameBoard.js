@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
 import { generateEmptyBoard } from '../utils/boardUtils';
-
-const URL = 'http://localhost:3001/api'
+import { URL } from '../App';
 
 const fetchBoard = async ({ queryKey }) => {
   const [_, generations] = queryKey;

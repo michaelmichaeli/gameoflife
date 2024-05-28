@@ -8,6 +8,8 @@ import LoaderSpinner from './components/LoaderSpinner';
 
 import './App.css'
 
+export const URL = 'http://localhost:3001/api';
+
 const App = () => {
   const [boardSize] = useState({ rows: 15, cols: 27 });
   const {
@@ -47,7 +49,7 @@ const App = () => {
         <LoaderSpinner {...loaderSpinnerProps} />
         <Board board={board} toggleCell={toggleCell} />
       </div>
-      <GameLoadAndSaveControls />
+      <GameLoadAndSaveControls board={board} />
     </>
   );
 };

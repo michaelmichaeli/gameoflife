@@ -1,6 +1,15 @@
 const express = require("express");
-const {	initialize,	getBoard,	evolve,} = require("../controllers/boardController");
-const {	validateBoard, validateGenerations,} = require("../middleware/validators");
+const {
+	initialize,
+	getBoard,
+	evolve,
+	save,
+	load
+} = require("../controllers/boardController");
+const {
+	validateBoard,
+	validateGenerations,
+} = require("../middleware/validators");
 const { validationResult } = require("express-validator");
 
 const router = express.Router();
@@ -16,5 +25,7 @@ const handleValidationErrors = (req, res, next) => {
 router.post("/initialize", validateBoard, handleValidationErrors, initialize);
 router.get("/board", validateGenerations, handleValidationErrors, getBoard);
 router.post("/evolve", evolve);
+router.post("/save", validateBoard, handleValidationErrors, save);
+router.get("/load", load);
 
 module.exports = router;
