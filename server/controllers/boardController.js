@@ -1,8 +1,10 @@
+const { initializeBoard, evolveBoard } = require("../services/gameOfLife");
 const {
-	initializeBoard,
-	evolveBoard,
-} = require("../services/gameOfLife");
-const { saveBoardToState, loadBoardFromState, getGameSavesFromState } = require("../state/boardState");
+	saveBoardToState,
+	loadBoardFromState,
+	getGameSavesFromState,
+} = require("../state/boardState");
+const deepEqual = require("../utils");
 
 let board = [];
 
@@ -27,23 +29,44 @@ const getGameSaves = (req, res, next) => {
 	}
 };
 
-const getBoard = (req, res, next) => {
+const getBoard = async (req, res, next) => {
 	try {
 		const generations = parseInt(req.query.generations, 10);
 
-		for (let i = 0; i < generations; i++) {
-			board = evolveBoard(board);
-		}
+		res.setHeader("Content-Type", "text/event-stream");
+		res.setHeader("Cache-Control", "no-cache");
+		res.setHeader("Connection", "keep-alive");
 
-		res.status(200).json({ board });
+		let counter = 0;
+		const interval = setInterval(async () => {
+			const newBoard = await evolveBoard(board);
+			const isEqualBoards = deepEqual(board, newBoard);
+			if (counter >= generations || isEqualBoards) {
+				clearInterval(interval);
+				res.write("board: end\n");
+				res.write("data: done\n\n");
+				res.end();
+				return;
+			}
+			res.write("event: board\n");
+			res.write(`id: ${counter}\n`);
+			res.write(`data: ${JSON.stringify(newBoard)}\n\n`);
+			counter++;
+			board = newBoard;
+		}, 100);
+
+		req.on("close", () => {
+			clearInterval(interval);
+			res.end();
+		});
 	} catch (error) {
 		next(error);
 	}
 };
 
-const evolve = (req, res, next) => {
+const evolve = async (req, res, next) => {
 	try {
-		board = evolveBoard(board);
+		board = await evolveBoard(board);
 		res.status(200).json({ board });
 	} catch (error) {
 		next(error);
