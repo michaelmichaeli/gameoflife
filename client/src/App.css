@@ -13,7 +13,7 @@
 
 h1 {
 	margin-block-start: 0;
-	margin-block-end: 80px;
+	margin-block-end: 60px;
 }
 
 input {
@@ -51,17 +51,17 @@ input {
 	width: 100%;
 }
 
-.loader {
+.loader-spinner {
 	width: 48px;
 	height: 48px;
 	border-radius: 50%;
 	position: absolute;
 	animation: rotate 1s linear infinite;
-	top: 100px;
+	top: 110px;
 	left: 50%;
 }
-.loader::before,
-.loader::after {
+.loader-spinner::before,
+.loader-spinner::after {
 	content: "";
 	box-sizing: border-box;
 	position: absolute;
@@ -70,7 +70,7 @@ input {
 	border: 5px solid #fff;
 	animation: prixClipFix 2s linear infinite;
 }
-.loader::after {
+.loader-spinner::after {
 	border-color: greenyellow;
 	animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
 	inset: 6px;

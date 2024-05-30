@@ -9,7 +9,7 @@ import RandomAndClearControls from './components/RandomAndClearControls';
 import './App.css'
 
 export const backendURL = 'http://localhost:3001/api';
-export const boardSize = { rows: 15, cols: 27 }
+export const boardSize = { rows: 13, cols: 25 }
 
 const App = () => {
   const {
