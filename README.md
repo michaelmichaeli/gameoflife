@@ -12,7 +12,7 @@ These instructions will help you set up and run the project on your local machin
 
 Before you begin, ensure you have the following installed:
 
-- [Node.js](https://nodejs.org/) (version X.X.X or higher)
+- [Node.js](https://nodejs.org/) (version v20.9.0 or higher)
 - [Git](https://git-scm.com/)
 
 ### Installation
@@ -24,3 +24,34 @@ Follow these steps to clone the repository and install the necessary dependencie
    ```sh
    git clone https://github.com/michaelmichaeli/gameoflife.git
    cd gameoflife
+   ```
+   
+2. **Go to server directory:**
+   
+   ```sh
+   cd server
+   npm install
+   ```
+   
+4. **Go to client directory:**
+   
+   ```sh
+   cd..
+   cd client
+   npm install
+   ```
+
+### Run
+
+Follow these steps to run the app:
+
+1. **In server directory:**
+   ```sh
+   node index.js
+   ```
+2. **In client directory:**
+   ```sh
+   npm run dev
+   ```
+
+### Have Fun
