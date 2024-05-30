@@ -1,14 +1,14 @@
 import React from 'react';
 import useGameLoadAndSave from '../hooks/useGameLoadAndSave';
 
-const GameLoadAndSaveControls = ({ board, setBoard }) => {
+const GameLoadAndSaveControls = ({ board, setBoard, setIsInitialized }) => {
   const {
     gameSaves,
     selectedGameSave,
     setSelectedGameSave,
     handleLoadGame,
     handleSaveGame,
-  } = useGameLoadAndSave(setBoard);
+  } = useGameLoadAndSave(setBoard, setIsInitialized);
 
   return (
     <div className='game-loader-controls'>

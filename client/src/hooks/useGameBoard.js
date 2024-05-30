@@ -173,6 +173,7 @@ const useGameBoard = (boardSize, defaultGenerations = 200) => {
 		evolveBoardData,
 		initializeBoardData,
 		isInitialized,
+		setIsInitialized,
 		isFetching,
 		isInitializing,
 		isEvolving,

@@ -21,6 +21,7 @@ const App = () => {
     isInitializing,
     isFetching,
     isInitialized,
+    setIsInitialized,
     fetchBoardData,
     evolveBoardData,
     initializeBoardData
@@ -49,7 +50,7 @@ const App = () => {
         <LoaderSpinner {...loaderSpinnerProps} />
         <Board board={board} toggleCell={toggleCell} />
       </div>
-      <GameLoadAndSaveControls board={board} setBoard={setBoard} />
+      <GameLoadAndSaveControls board={board} setBoard={setBoard} setIsInitialized={setIsInitialized} />
     </>
   );
 };

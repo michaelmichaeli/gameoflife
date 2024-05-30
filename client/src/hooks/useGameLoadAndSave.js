@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { backendURL } from "../App";
 
-const useGameLoadAndSave = (setBoard) => {
+const useGameLoadAndSave = (setBoard, setIsInitialized) => {
 	const [gameSaves, setGameSaves] = useState([]);
 	const [selectedGameSave, setSelectedGameSave] = useState(null);
 
@@ -29,6 +29,7 @@ const useGameLoadAndSave = (setBoard) => {
 				);
 				const loadedGameState = response.data.board;
 				setBoard(loadedGameState);
+				setIsInitialized(false);
 			} catch (error) {
 				console.error("Error loading game state:", error);
 				throw error;
