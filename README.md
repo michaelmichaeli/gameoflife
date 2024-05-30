@@ -1,6 +1,8 @@
-# Project Title
+# Conway's Game of Life
 
-A brief description of what this project does and who it's for.
+![Conway's Game of Life](https://upload.wikimedia.org/wikipedia/commons/e/e5/Gospers_glider_gun.gif)
+
+A cellular automaton devised by mathematician John Conway. This is a zero-player game, meaning its evolution is determined by its initial state, requiring no further input.
 
 ## Getting Started
 
@@ -8,17 +10,17 @@ These instructions will help you set up and run the project on your local machin
 
 ### Prerequisites
 
-List the software and tools you need to install before running the project:
+Before you begin, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (version X.X.X or higher)
 - [Git](https://git-scm.com/)
 
 ### Installation
 
-Step-by-step guide to get a development environment running:
+Follow these steps to clone the repository and install the necessary dependencies:
 
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   git clone https://github.com/michaelmichaeli/gameoflife.git
+   cd gameoflife
