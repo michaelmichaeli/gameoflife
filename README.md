@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-![Conway's Game of Life](client/src/assets/golgif.svg)
+![Conway's Game of Life](client/src/assets/golgif.gif)
 
 A cellular automaton devised by mathematician John Conway. This is a zero-player game, meaning its evolution is determined by its initial state, requiring no further input.
 
