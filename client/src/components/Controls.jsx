@@ -5,6 +5,10 @@ const Controls = ({ handleFetchBoard, handleInitialize, handleEvolve, isEvolving
       <button
         onClick={handleInitialize}
         disabled={isInitializing || isEvolving || isFetching}
+        style={{
+          backgroundColor: isInitialized ? "" : "greenyellow",
+          color: isInitialized ? "" : "black"
+        }}
       >
         {isInitializing ? 'Initializing...' : 'Initialize Board'}
       </button>
@@ -24,6 +28,10 @@ const Controls = ({ handleFetchBoard, handleInitialize, handleEvolve, isEvolving
         <button
           onClick={handleFetchBoard}
           disabled={!isInitialized || isInitializing || isEvolving || isFetching}
+          style={{
+            backgroundColor: !isInitialized || isInitializing || isEvolving || isFetching ? "" : "greenyellow",
+            color: !isInitialized || isInitializing || isEvolving || isFetching ? "" : "black"
+          }}
         >
           {isFetching ? 'Fetching...' : `Evolve ${generations} Generations`}
         </button>

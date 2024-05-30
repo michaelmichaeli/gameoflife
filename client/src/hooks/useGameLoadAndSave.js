@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { backendURL } from "../App";
 
-const useGameLoadAndSave = (setBoard, setIsInitialized) => {
+const useGameLoadAndSave = (loadBoard, setIsInitialized) => {
 	const [gameSaves, setGameSaves] = useState([]);
 	const [selectedGameSave, setSelectedGameSave] = useState(null);
 
@@ -28,7 +28,7 @@ const useGameLoadAndSave = (setBoard, setIsInitialized) => {
 					`${backendURL}/load?name=${selectedGameSave}`
 				);
 				const loadedGameState = response.data.board;
-				setBoard(loadedGameState);
+				loadBoard(loadedGameState);
 				setIsInitialized(false);
 			} catch (error) {
 				console.error("Error loading game state:", error);
@@ -52,7 +52,9 @@ const useGameLoadAndSave = (setBoard, setIsInitialized) => {
 					board,
 				}
 			);
-			setGameSaves((prev) => [name, ...prev]);
+			setGameSaves((prev) =>
+				[name, ...prev].filter((n, i) => prev.indexOf(n) === i)
+			);
 			console.log("Game state saved successfully:", response.data);
 			return response.data;
 		} catch (error) {

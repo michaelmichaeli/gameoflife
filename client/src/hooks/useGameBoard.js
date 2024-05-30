@@ -31,6 +31,7 @@ const useGameBoard = (boardSize, defaultGenerations = 200) => {
 	const [isInitialized, setIsInitialized] = useState(false);
 	const [isInitializing, setIsInitializing] = useState(false);
 	const [isEvolving, setIsEvolving] = useState(false);
+	const emptyBoard = generateEmptyBoard(boardSize.rows, boardSize.cols);
 
 	const fetchBoard = ({ queryKey }) => {
 		return new Promise((resolve, reject) => {
@@ -38,7 +39,6 @@ const useGameBoard = (boardSize, defaultGenerations = 200) => {
 
 			const handleData = (data) => {
 				data = JSON.parse(data);
-				console.log("🚀 ~ handleData");
 				setBoard(data);
 			};
 
@@ -76,7 +76,6 @@ const useGameBoard = (boardSize, defaultGenerations = 200) => {
 	};
 
 	useEffect(() => {
-		const emptyBoard = generateEmptyBoard(boardSize.rows, boardSize.cols);
 		setBoard(emptyBoard);
 	}, [boardSize]);
 
@@ -163,11 +162,37 @@ const useGameBoard = (boardSize, defaultGenerations = 200) => {
 		setBoard(newBoard);
 	};
 
+	const loadBoard = (board) => {
+		setBoard(board);
+	};
+
+	const clearBoard = () => {
+		setBoard(emptyBoard);
+	};
+
+	const randomizeBoard = () => {
+		const randomizedBoard = [];
+		for (let i = 0; i < boardSize.rows; i++) {
+			randomizedBoard[i] = [];
+			for (var j = 0; j < boardSize.cols; j++) {
+				const randomNumber = Math.random();
+				if (randomNumber < 0.85) {
+					randomizedBoard[i][j] = 0;
+				} else {
+					randomizedBoard[i][j] = 1;
+				}
+			}
+		}
+		setBoard(randomizedBoard);
+	};
+
 	return {
 		generations,
 		setGenerations,
 		board,
-		setBoard,
+		loadBoard,
+		clearBoard,
+		randomizeBoard,
 		toggleCell,
 		fetchBoardData,
 		evolveBoardData,

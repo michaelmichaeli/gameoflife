@@ -8,6 +8,12 @@
 	align-content: center;
 	justify-content: flex-start;
 	align-items: center;
+	gap: 10px;
+}
+
+h1 {
+	margin-block-start: 0;
+	margin-block-end: 80px;
 }
 
 input {
@@ -24,7 +30,16 @@ input {
 }
 
 .game-container {
-	padding-block: 20px;
+	/* padding-block: 20px; */
+}
+
+.random-clear-controls {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-content: center;
+	align-items: center;
+	width: 100%;
 }
 
 .game-loader-controls {
@@ -42,7 +57,7 @@ input {
 	border-radius: 50%;
 	position: absolute;
 	animation: rotate 1s linear infinite;
-	top: 30px;
+	top: 100px;
 	left: 50%;
 }
 .loader::before,

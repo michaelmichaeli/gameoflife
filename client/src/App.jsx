@@ -4,6 +4,7 @@ import Board from './components/Board';
 import Controls from './components/Controls';
 import GameLoadAndSaveControls from './components/GameLoadAndSaveControls';
 import LoaderSpinner from './components/LoaderSpinner';
+import RandomAndClearControls from './components/RandomAndClearControls';
 
 import './App.css'
 
@@ -15,7 +16,9 @@ const App = () => {
     generations,
     setGenerations,
     board,
-    setBoard,
+    loadBoard,
+    clearBoard,
+    randomizeBoard,
     toggleCell,
     isEvolving,
     isInitializing,
@@ -39,18 +42,22 @@ const App = () => {
     fetchBoardData();
   };
 
-  const controlsProps = { handleFetchBoard, handleInitialize, handleEvolve, isEvolving, isInitializing, isFetching, isInitialized, generations, setGenerations }
+  const buttonsProps = { isEvolving, isInitializing, isFetching, isInitialized }
+  const controlsProps = { handleFetchBoard, handleInitialize, handleEvolve, generations, setGenerations }
   const loaderSpinnerProps = { isInitializing, isEvolving, isFetching }
+  const randomAndClearProps = { randomizeBoard, clearBoard, setIsInitialized }
+  const loadAndSaveProps = { board, loadBoard, setIsInitialized }
 
   return (
     <>
       <h1>Conway&apos;s Game of Life</h1>
-      <Controls {...controlsProps} />
+      <Controls {...buttonsProps} {...controlsProps} />
       <div className='game-container'>
         <LoaderSpinner {...loaderSpinnerProps} />
         <Board board={board} toggleCell={toggleCell} />
       </div>
-      <GameLoadAndSaveControls board={board} setBoard={setBoard} setIsInitialized={setIsInitialized} />
+      <RandomAndClearControls {...buttonsProps} {...randomAndClearProps} />
+      <GameLoadAndSaveControls {...buttonsProps} {...loadAndSaveProps} />
     </>
   );
 };
