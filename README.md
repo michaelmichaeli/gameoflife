@@ -55,9 +55,9 @@ Follow these steps to run the app:
    ```
 
 ### Have Fun
-   Enjoy playing with the board of the game:
-   Play with loading saved game boards and save new game borads.
-   Randomize the board.
-   Press the initialize button to send to the server your game board as generation 0.
-   Evolve the board, once or as many times as you wish.
-   Get to watch your game board evolve in time.
+   * Enjoy playing with the board of the game:
+   * Play with loading saved game boards and save new game borads.
+   * Randomize the board.
+   * Press the initialize button to send to the server your game board as generation 0.
+   * Evolve the board, once or as many times as you wish.
+   * Get to watch your game board evolve in time.
