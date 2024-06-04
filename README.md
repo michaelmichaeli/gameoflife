@@ -55,7 +55,7 @@ Follow these steps to run the app:
    ```
 
 ### Have Fun
-   * Enjoy playing with the board of the game:
+Enjoy playing with the board of the game:
    * Play with loading saved game boards and save new game borads.
    * Randomize the board.
    * Press the initialize button to send to the server your game board as generation 0.
