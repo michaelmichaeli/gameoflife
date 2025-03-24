@@ -4,6 +4,10 @@
 
 A cellular automaton devised by mathematician John Conway. This is a zero-player game, meaning its evolution is determined by its initial state, requiring no further input.
 
+# Live Demo
+
+https://gameoflife-sand.vercel.app/
+
 ## Getting Started
 
 These instructions will help you set up and run the project on your local machine for development and testing purposes.
