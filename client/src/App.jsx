@@ -8,7 +8,11 @@ import RandomAndClearControls from './components/RandomAndClearControls';
 
 import './App.css'
 
-export const backendURL = 'https://gameoflife-2ad0.onrender.com/api';
+export const backendURL = 
+  window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:3001/api'
+    : 'https://gameoflife-2ad0.onrender.com/api';
+    
 export const boardSize = { rows: 13, cols: 25 }
 
 const App = () => {
