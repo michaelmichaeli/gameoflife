@@ -8,6 +8,39 @@ A cellular automaton devised by mathematician John Conway. This is a zero-player
 
 https://gameoflife-sand.vercel.app/
 
+## Project Overview
+
+This application is a full-stack implementation of Conway's Game of Life. It features a React frontend with a Node.js/Express backend that handles the game's logic and state management.
+
+### Architecture
+
+- **Frontend**: React SPA built with Vite
+- **Backend**: Node.js with Express
+- **Data Flow**: Server-Sent Events (SSE) for real-time board evolution
+- **State Management**: File-based storage with React Query for client-side caching
+
+### Technology Stack
+
+#### Frontend
+- React 18 with Hooks
+- React Query for data fetching and state management
+- Axios for API requests
+- Vite for build tooling
+
+#### Backend
+- Node.js with Express
+- Server-Sent Events for streaming board evolution
+- File-based state persistence (with UUID generation)
+
+### Application Flow
+
+1. **Board Creation**: Create a custom board by toggling cells or use randomization
+2. **Initialization**: Send the board to the server to start the game
+3. **Evolution**: 
+   - Request single evolution steps or
+   - Stream multiple generations with real-time updates
+4. **Save & Load**: Persist and retrieve game states
+
 ## Getting Started
 
 These instructions will help you set up and run the project on your local machine for development and testing purposes.
